@@ -1,7 +1,6 @@
 // src/components/FocusTimer.tsx
 import { useEffect, useState } from "react";
 import { useCountdown } from "@/hooks/useCountdown";
-import { PLANT_ICONS, PlantStage } from "@/lib/garden";
 
 type Props = {
   durationMs: number;
@@ -10,7 +9,6 @@ type Props = {
 
 export default function FocusTimer({ durationMs, onComplete }: Props) {
   const { remainingMs, isActive, start, abort } = useCountdown();
-  const [stage, setStage] = useState<PlantStage>(PLANT_ICONS[0]);
 
   // TODO: replace with proper mm:ss formatting
   const formatMs = (ms: number) => `${Math.ceil(ms / 1000)}s`;

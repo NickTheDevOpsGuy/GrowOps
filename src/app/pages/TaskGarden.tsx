@@ -6,9 +6,9 @@ import { PLANT_ICONS, PlantStage } from "@/lib/garden";
 const [plants, setPlants] = useState<number[]>(Array(12).fill(0));
 
 function handleComplete() {
-  setPlants(prev => {
+  setPlants((prev) => {
     const next = [...prev];
-    const i = Math.floor(Math.random() * next.length);   // random tile
+    const i = Math.floor(Math.random() * next.length); // random tile
     next[i] = Math.min(next[i] + 1, PLANT_ICONS.length - 1); // bump stage
     return next;
   });
