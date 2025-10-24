@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "allowImportingTsExtensions": false,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // ✅ Match vite.config.ts alias setup
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/app/*"],
+      "@styles/*": ["src/styles/*"],
+      "@components/*": ["src/app/components/*"],
+      "@hooks/*": ["src/app/hooks/*"],
+      "@lib/*": ["src/app/lib/*"],
+      "@types/*": ["src/app/types/*"]
+    }
+  },
+
+  // ✅ Make sure vite-env.d.ts and src are both watched
+  "include": ["src", "vite-env.d.ts"]
+}
