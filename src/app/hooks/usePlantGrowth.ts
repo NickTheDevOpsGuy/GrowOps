@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react';
 
 export function usePlantGrowth(maxStage = 3) {
   const [stage, setStage] = useState(0);
