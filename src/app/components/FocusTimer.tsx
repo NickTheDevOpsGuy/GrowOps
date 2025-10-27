@@ -1,6 +1,6 @@
 // src/components/FocusTimer.tsx
-import { useEffect, useState } from 'react';
-import { useCountdown } from '@/hooks/useCountdown';
+import { useEffect, useState, useRef } from "react";
+import { useCountdown } from "@/hooks/useCountdown";
 
 type Props = {
   durationMs: number;
@@ -11,30 +11,45 @@ export default function FocusTimer({ durationMs, onComplete }: Props) {
   const { remainingMs, isActive, start, abort } = useCountdown();
 
   // TODO: replace with proper mm:ss formatting
-  const formatMs = (ms: number) => `${Math.ceil(ms / 1000)}s`;
+  const wasRunningRef = useRef(false); // set true when you start the timer
 
-  // TODO (later): call onComplete exactly once when a run hits 0
   useEffect(() => {
-    // if (remainingMs === 0 && onComplete) onComplete();
+    if (remainingMs <= 0 && wasRunningRef.current) {
+      onComplete?.(); // proper finish signal
+      wasRunningRef.current = false;
+    }
   }, [remainingMs, onComplete]);
 
+  function formatMs(ms: number) {
+    const totalSeconds = Math.ceil(ms / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+  }
+
   return (
-    <div className='flex items-center gap-4'>
-      <div className='font-mono text-5xl tabular-nums'>
+    <div className="flex items-center gap-4">
+      <div className="font-mono text-5xl tabular-nums">
         {formatMs(remainingMs)}
       </div>
 
       <button
-        className='rounded border px-3 py-1'
-        onClick={() => start(durationMs)}
+        className="rounded border px-3 py-1"
+        onClick={() => {
+          wasRunningRef.current = true;
+          start(durationMs);
+        }}
         disabled={isActive}
       >
         Start
       </button>
 
       <button
-        className='rounded border px-3 py-1'
-        onClick={abort}
+        className="rounded border px-3 py-1"
+        onClick={() => {
+          abort();
+          wasRunningRef.current = false;
+        }}
         disabled={!isActive}
       >
         Abort

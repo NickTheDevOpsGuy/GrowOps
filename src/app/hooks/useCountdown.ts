@@ -1,5 +1,5 @@
 // src/hooks/useCountdown.ts
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 export function useCountdown() {
   // 🕒 internal state
