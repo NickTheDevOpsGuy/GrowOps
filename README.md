@@ -19,12 +19,6 @@ _Short tagline about what this project does_ 🦝
 
 ![App Demo GIF](./public/assets/preview.gif)
 
-### Feature Highlights
-
-![Feature Showcase](./public/assets/feature.gif)
-
-> 🎞️ _Previews are short animated GIFs recorded directly from the live app using screen capture — perfect for quick demos in READMEs._
-
 ---
 
 ## 🚀 Features
@@ -51,12 +45,12 @@ _Short tagline about what this project does_ 🦝
 
 ## 🛠 Tech Stack
 
-| Name                                                                               | Description                                             |
-| :--------------------------------------------------------------------------------- | :------------------------------------------------------ |
-| [React](https://react.dev/)                                                        | UI library for building interactive components.         |
-| [Vite](https://vitejs.dev/)                                                        | Lightning-fast development server and bundler.          |
-| [TypeScript](https://www.typescriptlang.org/)                                      | Strongly typed JavaScript for safer, cleaner code.      |
-| [TailwindCSS](https://tailwindcss.com/)                                            | Utility-first CSS framework for fast styling.           |
+| Name | Description |
+| :---- | :----------- |
+| [React](https://react.dev/) | UI library for building interactive components. |
+| [Vite](https://vitejs.dev/) | Lightning-fast development server and bundler. |
+| [TypeScript](https://www.typescriptlang.org/) | Strongly typed JavaScript for safer, cleaner code. |
+| [TailwindCSS](https://tailwindcss.com/) | Utility-first CSS framework for fast styling. |
 | [localStorage API](https://developer.mozilla.org/docs/Web/API/Window/localStorage) | Client-side persistence for tasks, plants, and streaks. |
 
 ---
