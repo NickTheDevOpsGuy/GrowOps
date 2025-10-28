@@ -1,12 +1,19 @@
-import { useState } from "react";
-import FocusTimer from "@/components/FocusTimer";
-import TaskList from "@/components/TaskList";
-import { PLANT_STAGES } from "@/components/icons";
+import { useState } from 'react';
+import FocusTimer from '@/components/FocusTimer';
+import TaskList from '@/components/TaskList';
+import { PLANT_STAGES } from '@/components/icons';
 
 // Small helper to render an icon component safely
-function StageIcon({ stage, className }: { stage: number; className?: string }) {
-  const Icon = PLANT_STAGES[Math.max(0, Math.min(stage, PLANT_STAGES.length - 1))];
-  return <Icon className={className ?? "h-5 w-5"} />;
+function StageIcon({
+  stage,
+  className,
+}: {
+  stage: number;
+  className?: string;
+}) {
+  const Icon =
+    PLANT_STAGES[Math.max(0, Math.min(stage, PLANT_STAGES.length - 1))];
+  return <Icon className={className ?? 'h-5 w-5'} />;
 }
 
 export default function TaskGarden() {
@@ -36,7 +43,7 @@ export default function TaskGarden() {
       setLastGrownStage(next[i]);
       // MVP “session log”
       console.log({
-        event: "session_complete",
+        event: 'session_complete',
         task: currentTask,
         minutes: sessionMinutes,
         endedAt: new Date().toISOString(),
@@ -54,19 +61,19 @@ export default function TaskGarden() {
   }
 
   return (
-    <div className="mx-auto min-h-screen max-w-5xl bg-[#FBF7EF] p-6 text-neutral-900 md:p-8">
+    <div className='mx-auto min-h-screen max-w-5xl bg-[#FBF7EF] p-6 text-neutral-900 md:p-8'>
       {/* Header */}
-      <div className="mb-6 flex flex-wrap items-baseline gap-3">
-        <h1 className="text-2xl font-bold">Task Garden 🌱</h1>
-        <span className="text-sm text-neutral-700">[Day Streak: —]</span>
-        <span className="text-sm text-neutral-700">[Total Focus: —]</span>
+      <div className='mb-6 flex flex-wrap items-baseline gap-3'>
+        <h1 className='text-2xl font-bold'>Task Garden 🌱</h1>
+        <span className='text-sm text-neutral-700'>[Day Streak: —]</span>
+        <span className='text-sm text-neutral-700'>[Total Focus: —]</span>
       </div>
 
       {/* 2×2 Grid */}
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className='grid gap-6 md:grid-cols-2'>
         {/* TL: Tasks */}
-        <section className="rounded-2xl border border-neutral-300 bg-[#FBF7EF] p-5">
-          <h2 className="mb-3 text-lg font-semibold">Tasks</h2>
+        <section className='rounded-2xl border border-neutral-300 bg-[#FBF7EF] p-5'>
+          <h2 className='mb-3 text-lg font-semibold'>Tasks</h2>
           <TaskList
             onSelect={setCurrentTask}
             selected={currentTask}
@@ -75,43 +82,45 @@ export default function TaskGarden() {
         </section>
 
         {/* TR: Garden */}
-        <section className="rounded-2xl border border-neutral-300 bg-[#FBF7EF] p-5">
-          <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-lg font-semibold">Garden</h2>
+        <section className='rounded-2xl border border-neutral-300 bg-[#FBF7EF] p-5'>
+          <div className='mb-3 flex items-center justify-between'>
+            <h2 className='text-lg font-semibold'>Garden</h2>
             <button
-              className="rounded-lg border px-3 py-1.5 text-sm"
+              className='rounded-lg border px-3 py-1.5 text-sm'
               onClick={handleResetGarden}
               disabled={isActive}
-              title={isActive ? "Stop the timer to reset" : "Reset garden"}
+              title={isActive ? 'Stop the timer to reset' : 'Reset garden'}
             >
               Reset Garden
             </button>
           </div>
 
-          <div className="grid grid-cols-4 gap-3">
+          <div className='grid grid-cols-4 gap-3'>
             {plants.map((stageIndex, i) => (
               <div
                 key={i}
                 className={`grid h-16 w-16 place-items-center rounded-xl border ${
-                  i === lastGrownIndex ? "score-bump ring-2 ring-green-400" : ""
+                  i === lastGrownIndex ? 'score-bump ring-2 ring-green-400' : ''
                 }`}
               >
-                <StageIcon stage={stageIndex} className="h-7 w-7" />
+                <StageIcon stage={stageIndex} className='h-7 w-7' />
               </div>
             ))}
           </div>
         </section>
 
         {/* BL: Timer */}
-        <section className="rounded-2xl border border-neutral-300 bg-[#FBF7EF] p-5">
-          <h2 className="mb-3 text-lg font-semibold">Timer</h2>
+        <section className='rounded-2xl border border-neutral-300 bg-[#FBF7EF] p-5'>
+          <h2 className='mb-3 text-lg font-semibold'>Timer</h2>
 
           {/* Optional context line */}
           {currentTask && (
-            <div className="mb-2 text-sm text-neutral-700">Task: {currentTask}</div>
+            <div className='mb-2 text-sm text-neutral-700'>
+              Task: {currentTask}
+            </div>
           )}
 
-          <div className="space-y-4">
+          <div className='space-y-4'>
             <FocusTimer
               durationMs={sessionMinutes * 60_000}
               onComplete={handleComplete}
@@ -120,41 +129,41 @@ export default function TaskGarden() {
             />
 
             {/* Simple progress track (static visual for MVP vibe) */}
-            <div className="h-4 rounded-lg border">
-              <div className="h-4 rounded-lg" style={{ width: "28%" }} />
+            <div className='h-4 rounded-lg border'>
+              <div className='h-4 rounded-lg' style={{ width: '28%' }} />
             </div>
           </div>
         </section>
 
         {/* BR: Session */}
-        <section className="rounded-2xl border border-neutral-300 bg-[#FBF7EF] p-5">
-          <h2 className="mb-3 text-lg font-semibold">Timer / Session</h2>
-          <div className="space-y-4 text-sm">
+        <section className='rounded-2xl border border-neutral-300 bg-[#FBF7EF] p-5'>
+          <h2 className='mb-3 text-lg font-semibold'>Timer / Session</h2>
+          <div className='space-y-4 text-sm'>
             <div>
-              <span className="text-neutral-600">Task: </span>
-              <span className="font-medium">{currentTask ?? "—"}</span>
+              <span className='text-neutral-600'>Task: </span>
+              <span className='font-medium'>{currentTask ?? '—'}</span>
             </div>
 
-            <div className="flex items-center gap-2">
-              <span className="text-neutral-600">Stage: </span>
+            <div className='flex items-center gap-2'>
+              <span className='text-neutral-600'>Stage: </span>
               <span
                 key={lastGrownStage ?? -1}
-                className={lastGrownStage !== null ? "score-bump" : ""}
+                className={lastGrownStage !== null ? 'score-bump' : ''}
                 title={
                   lastGrownStage === null
-                    ? "Soil"
+                    ? 'Soil'
                     : `Stage ${lastGrownStage + 1}`
                 }
               >
                 {/* If nothing grown yet, show stage 0 icon as “soil/seed” */}
-                <StageIcon stage={lastGrownStage ?? 0} className="h-5 w-5" />
+                <StageIcon stage={lastGrownStage ?? 0} className='h-5 w-5' />
               </span>
             </div>
 
-            <div className="text-sm">
-              <span className="text-neutral-600">Session length: </span>
+            <div className='text-sm'>
+              <span className='text-neutral-600'>Session length: </span>
               <select
-                className="ml-1 rounded border px-2 py-1"
+                className='ml-1 rounded border px-2 py-1'
                 value={sessionMinutes}
                 onChange={(e) => setSessionMinutes(Number(e.target.value))}
                 disabled={isActive}
@@ -167,21 +176,21 @@ export default function TaskGarden() {
               </select>
             </div>
 
-            <div className="flex gap-3">
+            <div className='flex gap-3'>
               <button
-                className="rounded-lg border px-4 py-2"
+                className='rounded-lg border px-4 py-2'
                 onClick={() => {
                   // optional: add explicit abort trigger if you surface it later
-                  alert("Use Abort in the Timer panel.");
+                  alert('Use Abort in the Timer panel.');
                 }}
               >
                 Abort ✖︎
               </button>
               <button
-                className="rounded-lg border px-4 py-2 font-medium"
+                className='rounded-lg border px-4 py-2 font-medium'
                 onClick={() => {
                   // optional: focus mode hook (future)
-                  alert("Focus Mode coming soon.");
+                  alert('Focus Mode coming soon.');
                 }}
               >
                 Focus Mode 🐦
@@ -192,7 +201,7 @@ export default function TaskGarden() {
       </div>
 
       {/* Footer tips */}
-      <p className="mt-6 text-sm text-neutral-700">
+      <p className='mt-6 text-sm text-neutral-700'>
         Tips: Stay in app for growth • Break: 5m after session
       </p>
     </div>

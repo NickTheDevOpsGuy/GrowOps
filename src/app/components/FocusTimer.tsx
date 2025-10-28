@@ -1,6 +1,6 @@
 // src/components/FocusTimer.tsx
-import { useEffect, useState, useRef } from "react";
-import { useCountdown } from "@/hooks/useCountdown";
+import { useEffect, useState, useRef } from 'react';
+import { useCountdown } from '@/hooks/useCountdown';
 
 type Props = {
   durationMs: number;
@@ -32,17 +32,17 @@ export default function FocusTimer({
     const totalSeconds = Math.ceil(ms / 1000);
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
-    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   }
 
   return (
-    <div className="flex items-center gap-4">
-      <div className="font-mono text-5xl tabular-nums">
+    <div className='flex items-center gap-4'>
+      <div className='font-mono text-5xl tabular-nums'>
         {formatMs(remainingMs)}
       </div>
 
       <button
-        className="rounded border px-3 py-1"
+        className='rounded border px-3 py-1'
         onClick={() => {
           wasRunningRef.current = true;
           start(durationMs);
@@ -54,7 +54,7 @@ export default function FocusTimer({
       </button>
 
       <button
-        className="rounded border px-3 py-1"
+        className='rounded border px-3 py-1'
         onClick={() => {
           abort();
           wasRunningRef.current = false;
