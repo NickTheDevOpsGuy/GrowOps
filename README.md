@@ -165,7 +165,7 @@ _Short tagline about what this project does_ 🦝
 
 ## 🦝 Built by NickDoesDevOps
 
-Created with ☕, curiosity, and a touch of chaos by [Nicholas Clark](https://www.linkedin.com/in/nickdoesdevops).  
-Follow the journey → [GitHub](https://github.com/NickTheDevOpsGuy) • [LinkedIn](https://www.linkedin.com/in/nickdoesdevops)
+Created with ☕, curiosity, and a touch of chaos by [Nicholas Clark]([https://www.linkedin.com/in/nickdoesdevops](https://www.linkedin.com/in/nicholas-a-clark/)).  
+Follow the journey → [GitHub](https://github.com/NickTheDevOpsGuy) • [LinkedIn]([https://www.linkedin.com/in/nickdoesdevops](https://www.linkedin.com/in/nicholas-a-clark/))
 
 🏷 #NickDoesDevOps • #LearningInPublic • #BuiltInPublic
