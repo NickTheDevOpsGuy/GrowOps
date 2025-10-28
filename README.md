@@ -51,12 +51,12 @@ _Short tagline about what this project does_ 🦝
 
 ## 🛠 Tech Stack
 
-| Name | Description |
-| :---- | :----------- |
-| [React](https://react.dev/) | UI library for building interactive components. |
-| [Vite](https://vitejs.dev/) | Lightning-fast development server and bundler. |
-| [TypeScript](https://www.typescriptlang.org/) | Strongly typed JavaScript for safer, cleaner code. |
-| [TailwindCSS](https://tailwindcss.com/) | Utility-first CSS framework for fast styling. |
+| Name                                                                               | Description                                             |
+| :--------------------------------------------------------------------------------- | :------------------------------------------------------ |
+| [React](https://react.dev/)                                                        | UI library for building interactive components.         |
+| [Vite](https://vitejs.dev/)                                                        | Lightning-fast development server and bundler.          |
+| [TypeScript](https://www.typescriptlang.org/)                                      | Strongly typed JavaScript for safer, cleaner code.      |
+| [TailwindCSS](https://tailwindcss.com/)                                            | Utility-first CSS framework for fast styling.           |
 | [localStorage API](https://developer.mozilla.org/docs/Web/API/Window/localStorage) | Client-side persistence for tasks, plants, and streaks. |
 
 ---

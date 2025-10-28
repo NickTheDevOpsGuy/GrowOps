@@ -1,8 +1,12 @@
 /* Tailwind base */
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* GrowOPS global look */
-html, body, #root { height: 100%; }
+html,
+body,
+#root {
+  height: 100%;
+}
 
 body {
   /* warm parchment + readable text */
@@ -11,13 +15,24 @@ body {
 
 /* Growth pop */
 @keyframes bump {
-  0% { transform: scale(1); }
-  35% { transform: scale(1.12); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-.score-bump { display: inline-block; animation: bump 180ms ease; }
+.score-bump {
+  display: inline-block;
+  animation: bump 180ms ease;
+}
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .score-bump { animation: none; }
+  .score-bump {
+    animation: none;
+  }
 }

@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { useCountdown } from "@/hooks/useCountdown";
+import { useEffect, useRef } from 'react';
+import { useCountdown } from '@/hooks/useCountdown';
 
 type Props = {
   durationMs: number;
@@ -31,15 +31,17 @@ export default function FocusTimer({
     const totalSeconds = Math.ceil(safe / 1000);
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
-    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   }
 
   return (
-    <div className="flex items-center gap-4">
-      <div className="font-mono text-5xl tabular-nums">{formatMs(remainingMs)}</div>
+    <div className='flex items-center gap-4'>
+      <div className='font-mono text-5xl tabular-nums'>
+        {formatMs(remainingMs)}
+      </div>
 
       <button
-        className="rounded border px-3 py-1"
+        className='rounded border px-3 py-1'
         onClick={() => {
           wasRunningRef.current = true;
           start(durationMs);
@@ -48,24 +50,24 @@ export default function FocusTimer({
         disabled={isActive || !!startDisabled}
         title={
           isActive
-            ? "Timer is already running"
+            ? 'Timer is already running'
             : startDisabled
-            ? "Select a task to enable Start"
-            : "Start session"
+              ? 'Select a task to enable Start'
+              : 'Start session'
         }
       >
         Start
       </button>
 
       <button
-        className="rounded border px-3 py-1"
+        className='rounded border px-3 py-1'
         onClick={() => {
           abort();
           wasRunningRef.current = false;
           onActiveChange?.(false);
         }}
         disabled={!isActive}
-        title={!isActive ? "Timer is not running" : "Abort current session"}
+        title={!isActive ? 'Timer is not running' : 'Abort current session'}
       >
         Abort
       </button>
