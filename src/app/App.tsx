@@ -7,10 +7,10 @@ export default function App() {
     <>
       <Routes>
         {/* Default → redirect to /growops */}
-        <Route path="/" element={<Navigate to="/growops" replace />} />
+        <Route path='/' element={<Navigate to='/growops' replace />} />
 
         {/* Main page */}
-        <Route path="/growops" element={<TaskGarden />} />
+        <Route path='/growops' element={<TaskGarden />} />
       </Routes>
     </>
   );
