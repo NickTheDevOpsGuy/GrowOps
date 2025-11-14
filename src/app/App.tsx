@@ -1,16 +1,16 @@
-// App.tsx (skeleton)
-import { Routes, Route, Link } from 'react-router-dom';
+// App.tsx
+import { Routes, Route, Navigate } from 'react-router-dom';
 import TaskGarden from './pages/TaskGarden';
 
 export default function App() {
   return (
     <>
-      <nav className='flex gap-3 p-3'>
-        <Link to='/growops'>GrowOps</Link>
-      </nav>
-
       <Routes>
-        <Route path='/growops' element={<TaskGarden />} />
+        {/* Default → redirect to /growops */}
+        <Route path="/" element={<Navigate to="/growops" replace />} />
+
+        {/* Main page */}
+        <Route path="/growops" element={<TaskGarden />} />
       </Routes>
     </>
   );
