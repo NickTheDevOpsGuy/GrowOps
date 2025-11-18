@@ -2,24 +2,18 @@
 import { useEffect, useRef, useState } from 'react';
 
 export function useCountdown() {
-  // 🕒 internal state
   const [remainingMs, setRemainingMs] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
-  // 🔁 store interval id here (DOM version so TS is happy)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  // 🕓 finish-line timestamp
   const targetRef = useRef<number | null>(null);
 
-  // 🚀 start timer
   const start = (durationMs: number) => {
-    // prevent double-starts
     if (isActive || intervalRef.current) return;
 
     setIsActive(true);
     targetRef.current = Date.now() + durationMs;
-    setRemainingMs(durationMs); // show full duration instantly
+    setRemainingMs(durationMs);
 
     intervalRef.current = setInterval(() => {
       if (!targetRef.current) return;
@@ -35,16 +29,15 @@ export function useCountdown() {
     }, 1000);
   };
 
-  // ⏹️ abort timer
   const abort = () => {
     if (intervalRef.current != null) {
       window.clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
     setIsActive(false);
+    setRemainingMs(0);
   };
 
-  // 🧹 cleanup on unmount
   useEffect(() => {
     return () => {
       if (intervalRef.current != null) {
@@ -54,7 +47,6 @@ export function useCountdown() {
     };
   }, []);
 
-  // 📦 expose API
   return {
     remainingMs,
     isActive,

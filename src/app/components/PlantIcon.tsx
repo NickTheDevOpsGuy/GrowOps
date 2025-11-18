@@ -7,10 +7,10 @@ export function IconBase({
 }: React.PropsWithChildren<IconProps>) {
   return (
     <svg
-      viewBox='0 0 24 24'
-      role='img'
+      viewBox="0 0 24 24"
+      role="img"
       aria-label={title}
-      className={className ?? 'size-10'}
+      className={className ?? "size-10"}
     >
       {title ? <title>{title}</title> : null}
       {children}

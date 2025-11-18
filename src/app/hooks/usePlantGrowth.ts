@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+// src/app/hooks/usePlantGrowth.ts
+import { useState } from 'react';
 
 export function usePlantGrowth(maxStage = 3) {
   const [stage, setStage] = useState(0);
@@ -11,9 +12,6 @@ export function usePlantGrowth(maxStage = 3) {
     setIsGrowing(false);
     setStage(0);
   };
-
-  // TODO (Tuesday): if isGrowing && stage < maxStage → setInterval(advance,...)
-  // Cleanup in effect return; stop when stage === maxStage.
 
   return { stage, isGrowing, start, stop, reset, advance };
 }
