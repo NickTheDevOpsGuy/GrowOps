@@ -50,8 +50,7 @@ export default function FocusTimer({
   const displayMs =
     isActive || remainingMs > 0 ? remainingMs : effectiveDurationMs;
 
-  const safeMs =
-    Number.isFinite(displayMs) && displayMs > 0 ? displayMs : 0;
+  const safeMs = Number.isFinite(displayMs) && displayMs > 0 ? displayMs : 0;
 
   const totalSeconds = Math.floor(safeMs / 1000);
   const minutes = Math.floor(totalSeconds / 60);
@@ -77,39 +76,39 @@ export default function FocusTimer({
   };
 
   return (
-    <div className="flex items-center justify-between gap-4 rounded-xl border border-neutral-300 bg-white px-4 py-3 shadow-sm">
-      <div className="flex flex-col">
-        <span className="text-xs uppercase tracking-wide text-neutral-500">
+    <div className='flex items-center justify-between gap-4 rounded-xl border border-neutral-300 bg-white px-4 py-3 shadow-sm'>
+      <div className='flex flex-col'>
+        <span className='text-xs uppercase tracking-wide text-neutral-500'>
           Focus Time
         </span>
-        <span className="font-mono text-3xl tabular-nums text-neutral-900">
+        <span className='font-mono text-3xl tabular-nums text-neutral-900'>
           {formatted}
         </span>
-        <span className="text-xs text-neutral-500">
+        <span className='text-xs text-neutral-500'>
           {isActive ? 'Session in progress' : 'Ready to start'}
         </span>
       </div>
 
-      <div className="flex gap-2">
+      <div className='flex gap-2'>
         <button
-          type="button"
-          className="rounded border border-emerald-500 bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-800 hover:bg-emerald-100 disabled:cursor-not-allowed disabled:opacity-60"
+          type='button'
+          className='rounded border border-emerald-500 bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-800 hover:bg-emerald-100 disabled:cursor-not-allowed disabled:opacity-60'
           onClick={handleStartClick}
           disabled={isActive || !!startDisabled}
           title={
             isActive
               ? 'Timer is already running'
               : startDisabled
-              ? 'Select a task to enable Start'
-              : 'Start focus session'
+                ? 'Select a task to enable Start'
+                : 'Start focus session'
           }
         >
           Start
         </button>
 
         <button
-          type="button"
-          className="rounded border border-neutral-400 bg-neutral-50 px-3 py-1 text-sm text-neutral-800 hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-60"
+          type='button'
+          className='rounded border border-neutral-400 bg-neutral-50 px-3 py-1 text-sm text-neutral-800 hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-60'
           onClick={handleAbortClick}
           disabled={!isActive}
           title={!isActive ? 'Timer is not running' : 'Abort current session'}

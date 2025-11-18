@@ -36,38 +36,38 @@ export default function TaskList({
   };
 
   return (
-    <div className="space-y-3">
-      <div className="flex gap-2">
+    <div className='space-y-3'>
+      <div className='flex gap-2'>
         <input
-          type="text"
+          type='text'
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Add a task…"
-          className="flex-1 rounded-lg border border-neutral-300 px-3 py-1.5 text-sm"
+          placeholder='Add a task…'
+          className='flex-1 rounded-lg border border-neutral-300 px-3 py-1.5 text-sm'
           disabled={!!disabled}
         />
         <button
-          type="button"
+          type='button'
           onClick={handleAdd}
           disabled={!!disabled || !draft.trim()}
-          className="rounded-lg border border-emerald-500 bg-emerald-50 px-3 py-1.5 text-sm text-emerald-800 disabled:cursor-not-allowed disabled:opacity-60"
+          className='rounded-lg border border-emerald-500 bg-emerald-50 px-3 py-1.5 text-sm text-emerald-800 disabled:cursor-not-allowed disabled:opacity-60'
         >
           Add
         </button>
       </div>
 
-      <div className="space-y-1">
+      <div className='space-y-1'>
         {tasks.length === 0 && (
-          <div className="text-sm text-neutral-500">
+          <div className='text-sm text-neutral-500'>
             No tasks yet — add one above.
           </div>
         )}
 
         {tasks.map((name) => (
-          <div key={name} className="flex items-center gap-2">
+          <div key={name} className='flex items-center gap-2'>
             <button
-              type="button"
+              type='button'
               disabled={!!disabled}
               onClick={() => onSelect(name)}
               className={`w-full rounded-lg border px-3 py-1.5 text-left text-sm
@@ -84,11 +84,11 @@ export default function TaskList({
 
             {onRemove && (
               <button
-                type="button"
+                type='button'
                 onClick={() => onRemove(name)}
                 disabled={!!disabled}
-                className="rounded-lg border border-neutral-300 px-2 py-1 text-xs disabled:opacity-60"
-                title="Remove task"
+                className='rounded-lg border border-neutral-300 px-2 py-1 text-xs disabled:opacity-60'
+                title='Remove task'
               >
                 ✖︎
               </button>

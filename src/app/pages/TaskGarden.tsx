@@ -109,12 +109,9 @@ export default function TaskGarden() {
               const s = raw as Partial<Session>;
               return {
                 task:
-                  typeof s.task === 'string' || s.task === null
-                    ? s.task
-                    : null,
+                  typeof s.task === 'string' || s.task === null ? s.task : null,
                 minutes:
-                  typeof s.minutes === 'number' &&
-                  Number.isFinite(s.minutes)
+                  typeof s.minutes === 'number' && Number.isFinite(s.minutes)
                     ? s.minutes
                     : 25,
                 endedAt:
@@ -187,7 +184,10 @@ export default function TaskGarden() {
     const endedAt = new Date().toISOString();
 
     setSessions((prev) => {
-      const next = [...prev, { task: currentTask, minutes: sessionMinutes, endedAt }];
+      const next = [
+        ...prev,
+        { task: currentTask, minutes: sessionMinutes, endedAt },
+      ];
       setDayStreak(computeDayStreak(next));
       setTotalFocusMin(computeTotalMinutes(next));
       return next;
@@ -234,39 +234,39 @@ export default function TaskGarden() {
 
   // ---------- Render
   return (
-    <div className="min-h-screen bg-emerald-50 px-4 py-6 text-neutral-900">
-      <div className="mx-auto max-w-5xl space-y-6">
-        <header className="flex items-center justify-between gap-4">
+    <div className='min-h-screen bg-emerald-50 px-4 py-6 text-neutral-900'>
+      <div className='mx-auto max-w-5xl space-y-6'>
+        <header className='flex items-center justify-between gap-4'>
           <div>
-            <h1 className="text-2xl font-semibold">GrowOps</h1>
-            <p className="text-sm text-neutral-600">
+            <h1 className='text-2xl font-semibold'>GrowOps</h1>
+            <p className='text-sm text-neutral-600'>
               Grow a tiny productivity garden with each focus session.
             </p>
           </div>
-          <div className="rounded-xl border border-emerald-200 bg-white px-3 py-2 text-xs text-neutral-700 shadow-sm">
+          <div className='rounded-xl border border-emerald-200 bg-white px-3 py-2 text-xs text-neutral-700 shadow-sm'>
             <div>
-              <span className="font-semibold">{dayStreak}</span> day streak
+              <span className='font-semibold'>{dayStreak}</span> day streak
             </div>
             <div>
-              <span className="font-semibold">{totalSessions}</span> sessions ·{' '}
-              <span className="font-semibold">{totalFocusMin}</span> min (
+              <span className='font-semibold'>{totalSessions}</span> sessions ·{' '}
+              <span className='font-semibold'>{totalFocusMin}</span> min (
               {totalHours} h)
             </div>
           </div>
         </header>
 
-        <main className="grid gap-4 md:grid-cols-[2fr,2fr] lg:grid-cols-[2fr,2fr]">
+        <main className='grid gap-4 md:grid-cols-[2fr,2fr] lg:grid-cols-[2fr,2fr]'>
           {/* Tasks + Timer */}
-          <section className="space-y-4">
-            <div className="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm">
-              <div className="mb-3 flex items-center justify-between gap-2">
-                <h2 className="text-sm font-semibold uppercase tracking-wide text-neutral-600">
+          <section className='space-y-4'>
+            <div className='rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm'>
+              <div className='mb-3 flex items-center justify-between gap-2'>
+                <h2 className='text-sm font-semibold uppercase tracking-wide text-neutral-600'>
                   Tasks
                 </h2>
                 {currentTask && (
-                  <p className="text-xs text-neutral-500">
+                  <p className='text-xs text-neutral-500'>
                     Selected:{' '}
-                    <span className="font-medium text-neutral-800">
+                    <span className='font-medium text-neutral-800'>
                       {currentTask}
                     </span>
                   </p>
@@ -283,29 +283,26 @@ export default function TaskGarden() {
               />
             </div>
 
-            <div className="rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm">
-              <div className="mb-3 flex items-center justify-between gap-2">
-                <h2 className="text-sm font-semibold uppercase tracking-wide text-neutral-600">
+            <div className='rounded-2xl border border-neutral-200 bg-white p-4 shadow-sm'>
+              <div className='mb-3 flex items-center justify-between gap-2'>
+                <h2 className='text-sm font-semibold uppercase tracking-wide text-neutral-600'>
                   Timer &amp; Session
                 </h2>
-                <div className="flex items-center gap-2 text-xs text-neutral-500">
-                  <label className="flex items-center gap-1">
+                <div className='flex items-center gap-2 text-xs text-neutral-500'>
+                  <label className='flex items-center gap-1'>
                     Length:
                     <input
-                      type="number"
+                      type='number'
                       min={5}
                       max={120}
                       step={5}
                       value={sessionMinutes}
                       onChange={(e) =>
                         setSessionMinutes(
-                          Math.max(
-                            5,
-                            Number.parseInt(e.target.value, 10) || 25
-                          )
+                          Math.max(5, Number.parseInt(e.target.value, 10) || 25)
                         )
                       }
-                      className="w-14 rounded border border-neutral-300 px-1 py-0.5 text-xs"
+                      className='w-14 rounded border border-neutral-300 px-1 py-0.5 text-xs'
                       disabled={isActive}
                     />
                     min
@@ -320,19 +317,19 @@ export default function TaskGarden() {
                 onActiveChange={setIsActive}
               />
 
-              <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+              <div className='mt-3 flex flex-wrap items-center gap-2 text-xs'>
                 <button
-                  type="button"
+                  type='button'
                   onClick={openFocusMode}
-                  className="rounded-lg border border-emerald-500 bg-emerald-50 px-3 py-1 font-medium text-emerald-800 hover:bg-emerald-100 disabled:opacity-60"
+                  className='rounded-lg border border-emerald-500 bg-emerald-50 px-3 py-1 font-medium text-emerald-800 hover:bg-emerald-100 disabled:opacity-60'
                   disabled={!currentTask}
                 >
                   Focus Mode
                 </button>
                 <button
-                  type="button"
+                  type='button'
                   onClick={handleResetStats}
-                  className="rounded-lg border border-neutral-300 bg-neutral-50 px-3 py-1 text-neutral-700 hover:bg-neutral-100"
+                  className='rounded-lg border border-neutral-300 bg-neutral-50 px-3 py-1 text-neutral-700 hover:bg-neutral-100'
                   disabled={!sessions.length}
                 >
                   Reset Stats
@@ -342,26 +339,24 @@ export default function TaskGarden() {
           </section>
 
           {/* Garden */}
-          <section className="space-y-4">
-            <div className="rounded-2xl border border-emerald-200 bg-white p-4 shadow-sm">
-              <div className="mb-3 flex items-center justify-between gap-2">
-                <h2 className="text-sm font-semibold uppercase tracking-wide text-neutral-600">
+          <section className='space-y-4'>
+            <div className='rounded-2xl border border-emerald-200 bg-white p-4 shadow-sm'>
+              <div className='mb-3 flex items-center justify-between gap-2'>
+                <h2 className='text-sm font-semibold uppercase tracking-wide text-neutral-600'>
                   Garden
                 </h2>
                 {lastGrownIndex != null && lastGrownStage != null && (
-                  <p className="text-xs text-neutral-500">
+                  <p className='text-xs text-neutral-500'>
                     Last growth: plot {lastGrownIndex + 1} · stage{' '}
                     {lastGrownStage + 1}/{PLANT_STAGES.length}
                   </p>
                 )}
               </div>
 
-              <div className="grid grid-cols-4 gap-3">
+              <div className='grid grid-cols-4 gap-3'>
                 {plants.map((stage, index) => {
                   const StageIcon =
-                    PLANT_STAGES[
-                      Math.min(stage, PLANT_STAGES.length - 1)
-                    ];
+                    PLANT_STAGES[Math.min(stage, PLANT_STAGES.length - 1)];
                   const isLast = index === lastGrownIndex;
                   return (
                     <div
@@ -371,10 +366,10 @@ export default function TaskGarden() {
                       }`}
                     >
                       <StageIcon
-                        className="mb-1 h-8 w-8 text-emerald-700"
+                        className='mb-1 h-8 w-8 text-emerald-700'
                         title={`Plant ${index + 1}, stage ${stage + 1}`}
                       />
-                      <span className="text-[10px] text-neutral-600">
+                      <span className='text-[10px] text-neutral-600'>
                         Plot {index + 1}
                       </span>
                     </div>
@@ -382,11 +377,11 @@ export default function TaskGarden() {
                 })}
               </div>
 
-              <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+              <div className='mt-3 flex flex-wrap items-center gap-2 text-xs'>
                 <button
-                  type="button"
+                  type='button'
                   onClick={handleResetGarden}
-                  className="rounded-lg border border-neutral-300 bg-neutral-50 px-3 py-1 text-neutral-700 hover:bg-neutral-100"
+                  className='rounded-lg border border-neutral-300 bg-neutral-50 px-3 py-1 text-neutral-700 hover:bg-neutral-100'
                   disabled={plants.every((p) => p === 0)}
                 >
                   Reset Garden
@@ -400,35 +395,35 @@ export default function TaskGarden() {
       {/* Focus Mode Overlay */}
       {focusMode && (
         <div
-          className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-4"
+          className='fixed inset-0 z-40 flex items-center justify-center bg-black/60 px-4'
           onClick={closeFocusMode}
         >
           <div
-            className="max-w-md rounded-2xl border border-neutral-700 bg-neutral-900 p-5 text-neutral-50 shadow-xl"
+            className='max-w-md rounded-2xl border border-neutral-700 bg-neutral-900 p-5 text-neutral-50 shadow-xl'
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mb-4 flex items-start justify-between gap-3">
+            <div className='mb-4 flex items-start justify-between gap-3'>
               <div>
-                <h2 className="text-sm font-semibold uppercase tracking-wide text-neutral-400">
+                <h2 className='text-sm font-semibold uppercase tracking-wide text-neutral-400'>
                   Focus Mode
                 </h2>
-                <p className="text-sm text-neutral-200">
+                <p className='text-sm text-neutral-200'>
                   Working on:{' '}
-                  <span className="font-semibold">
+                  <span className='font-semibold'>
                     {currentTask ?? 'No task selected'}
                   </span>
                 </p>
               </div>
               <button
-                type="button"
+                type='button'
                 onClick={closeFocusMode}
-                className="rounded-lg border border-neutral-600 bg-neutral-800 px-2 py-1 text-xs hover:bg-neutral-700"
+                className='rounded-lg border border-neutral-600 bg-neutral-800 px-2 py-1 text-xs hover:bg-neutral-700'
               >
                 Exit
               </button>
             </div>
 
-            <div className="mb-4">
+            <div className='mb-4'>
               <FocusTimer
                 durationMs={sessionMinutes * 60_000}
                 onComplete={() => {
@@ -439,7 +434,7 @@ export default function TaskGarden() {
               />
             </div>
 
-            <p className="text-xs text-neutral-400">
+            <p className='text-xs text-neutral-400'>
               Tip: Click the dark backdrop, press <kbd>Esc</kbd>, or use Exit to
               leave focus mode.
             </p>
