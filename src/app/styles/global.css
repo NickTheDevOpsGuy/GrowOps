@@ -10,7 +10,7 @@ body,
 
 body {
   /* warm parchment + readable text */
-  @apply bg-[#FBF7EF] text-neutral-900 font-sans;
+  @apply bg-[#FBF7EF] font-sans text-neutral-900;
 }
 
 /* Growth pop */

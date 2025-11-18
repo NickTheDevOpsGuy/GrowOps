@@ -1,4 +1,6 @@
+// src/app/components/TaskList.tsx
 import { useState } from 'react';
+import type React from 'react';
 
 type Props = {
   tasks: string[];
@@ -19,40 +21,45 @@ export default function TaskList({
 }: Props) {
   const [draft, setDraft] = useState('');
 
-  function submit() {
+  const handleAdd = () => {
     const trimmed = draft.trim();
     if (!trimmed) return;
     onAdd(trimmed);
     setDraft('');
-  }
+  };
+
+  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleAdd();
+    }
+  };
 
   return (
-    <div className='space-y-3 text-sm'>
-      {/* Add Task */}
+    <div className='space-y-3'>
       <div className='flex gap-2'>
         <input
+          type='text'
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') submit();
-          }}
+          onKeyDown={handleKeyDown}
+          placeholder='Add a task…'
+          className='flex-1 rounded-lg border border-neutral-300 px-3 py-1.5 text-sm'
           disabled={!!disabled}
-          placeholder='Add new task…'
-          className='flex-1 rounded-lg border border-neutral-300 px-3 py-1.5 disabled:opacity-60'
         />
         <button
-          onClick={submit}
+          type='button'
+          onClick={handleAdd}
           disabled={!!disabled || !draft.trim()}
-          className='rounded-lg border border-neutral-300 px-3 py-1.5 disabled:opacity-60'
+          className='rounded-lg border border-emerald-500 bg-emerald-50 px-3 py-1.5 text-sm text-emerald-800 disabled:cursor-not-allowed disabled:opacity-60'
         >
           Add
         </button>
       </div>
 
-      {/* List */}
-      <div className='space-y-2'>
+      <div className='space-y-1'>
         {tasks.length === 0 && (
-          <div className='rounded-lg border border-dashed border-neutral-300 p-3 text-neutral-600'>
+          <div className='text-sm text-neutral-500'>
             No tasks yet — add one above.
           </div>
         )}
@@ -60,10 +67,15 @@ export default function TaskList({
         {tasks.map((name) => (
           <div key={name} className='flex items-center gap-2'>
             <button
+              type='button'
               disabled={!!disabled}
               onClick={() => onSelect(name)}
-              className={`w-full rounded-lg border px-3 py-1.5 text-left
-                ${selected === name ? 'bg-green-100 border-green-500' : 'border-neutral-300'}
+              className={`w-full rounded-lg border px-3 py-1.5 text-left text-sm
+                ${
+                  selected === name
+                    ? 'bg-emerald-100 border-emerald-500'
+                    : 'border-neutral-300'
+                }
                 ${disabled ? 'cursor-not-allowed opacity-60' : ''}`}
               title={disabled ? 'Timer running' : 'Select task'}
             >
@@ -72,6 +84,7 @@ export default function TaskList({
 
             {onRemove && (
               <button
+                type='button'
                 onClick={() => onRemove(name)}
                 disabled={!!disabled}
                 className='rounded-lg border border-neutral-300 px-2 py-1 text-xs disabled:opacity-60'

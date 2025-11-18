@@ -1,8 +1,8 @@
 # 🌿 GrowOps
 
-_Short tagline about what this project does_ 🦝
+_Grow a tiny productivity garden with each focus session._ 🦝
 
-[![CI](https://github.com/NickTheDevOpsGuy/GrowOps/actions/workflows/ci-file.yml/badge.svg)](https://github.com/NickTheDevOpsGuy/GrowOps/actions/workflows/growsops-ci.yml)
+[![CI](https://github.com/NickTheDevOpsGuy/GrowOps/actions/workflows/growsops-ci.yml/badge.svg)](https://github.com/NickTheDevOpsGuy/GrowOps/actions/workflows/growsops-ci.yml)
 ![Last Commit](https://img.shields.io/github/last-commit/NickTheDevOpsGuy/GrowOps)
 ![Built with React](https://img.shields.io/badge/Built%20with-React-61dafb?logo=react&logoColor=white)
 
@@ -21,6 +21,12 @@ _Short tagline about what this project does_ 🦝
 
 ---
 
+🌐 Live Demo
+
+Try GrowOps here: https://grow-ops.vercel.app/growops
+
+---
+
 ## 🚀 Features
 
 - 🌱 Pomodoro-style Focus Timer — start, abort, or complete sessions
@@ -35,11 +41,22 @@ _Short tagline about what this project does_ 🦝
 
 ## 🗓️ Roadmap
 
+### 🌐 Multi-Dataset Support
+
+- Optional cloud sync (Supabase)
+- Cross-device garden sharing
+
+### 🧠 Advanced Growth & UX
+
 - Animated growth transitions
-- Garden “snapshot” export / share image
-- Optional sound effects on completion
-- Supabase sync (optional cloud save)
-- Themed plant packs 🌻🌵🌸
+- Soft ambient sound effects
+- Plant lifecycle: seed → sprout → bloom
+
+### 🖼 Visualization Upgrades
+
+- Garden “snapshot” export
+- Seasonal plant packs (🌻 🌵 🌸)
+- Themes (dark mode, nature themes, neon, cozy)
 
 ---
 
@@ -94,7 +111,8 @@ _Short tagline about what this project does_ 🦝
 │   │   └── question_discussion.yml
 │   ├── pull_request_template.md
 │   └── workflows
-│       └── growsops-ci.yml
+│       ├── growsops-ci.yml
+│       └── vercel-production.yml
 ├── .gitignore
 ├── .husky
 │   ├── pre-commit
@@ -104,25 +122,24 @@ _Short tagline about what this project does_ 🦝
 ├── .prettierrc.json
 ├── .prettierrc.yml
 ├── .stylelintrc.json
+├── eslint.config.ts
 ├── index.html
 ├── LICENSE
 ├── package-lock.json
 ├── package.json
 ├── public
+│   └── assets
+│       ├── growops.svg
+│       └── preview.gif
 ├── README.md
 ├── scripts
 │   └── precheck.sh
 ├── src
-│   ├── .DS_Store
 │   └── app
-│       ├── .DS_Store
 │       ├── App.tsx
-│       ├── assets
-│       │   └── .DS_Store
 │       ├── components
 │       │   ├── Card.tsx
 │       │   ├── FocusTimer.tsx
-│       │   ├── GardenGrid.tsx
 │       │   ├── icons
 │       │   │   ├── Bloom.tsx
 │       │   │   ├── Bud.tsx
@@ -139,8 +156,6 @@ _Short tagline about what this project does_ 🦝
 │       ├── main.tsx
 │       ├── pages
 │       │   └── TaskGarden.tsx
-│       ├── state
-│       │   └── session.ts
 │       ├── styles
 │       │   └── global.css
 │       └── types
